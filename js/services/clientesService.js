@@ -1,10 +1,10 @@
-const API_URL = "";
+const API_URL = "localhost:8080/api/clientes";
 
 export async function obtenerClientes() {
     try{
         const respuesta = await fetch(API_URL);
         if(!respuesta.ok){
-            throw new Error("Error al obtener el cliente");
+            throw new Error("Error al obtener los clientes");
         }
 
         const cliente = await respuesta.json();
@@ -22,7 +22,7 @@ export async function agregarCliente(cliente) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(persona)
+            body: JSON.stringify(cliente)
         });
         if(!respuesta.ok) {
             throw new Error("Error al crear el cliente")
@@ -59,7 +59,7 @@ export async function obtenerCliente(id) {
         const cliente = await  respuesta.json();
         return cliente;
     } catch (error){
-        console.error("Error mal crgaar a la persona");
+        console.error("Error al cargar el cliente");
         throw error;
     }
 }
@@ -74,7 +74,7 @@ export async function editarCliente(id, cliente) {
             body: JSON.stringify(cliente)
         })
         if(!answer.ok) {
-            throw new Error("Error al actualizar la persona")
+            throw new Error("Error al actualizar el cliente")
         }
         const clienteActualizado = await answer.json();
         return clienteActualizado;

@@ -1,4 +1,4 @@
-import { obtenerClientes, agregarCliente, eliminarCliente, obtenerCliente, editarCliente } from "../services/clientesService";
+import { obtenerClientes, agregarCliente, eliminarCliente, obtenerCliente, editarCliente } from "/services/clientesService";
 
 const formulario = document.getElementById("formulario");
 const idCliente = document.getElementById("idCliente")
@@ -26,11 +26,11 @@ async function mostrarClientes() {
                 <td>${cliente.direccion}</td>
             </tr>
             <button class= "bootstrap" onclick="eliminarCliente(${cliente.id})">Eliminar</button>
-            <button class= "bootstrap" onclick="getFormData(${cliente.id})">Eliminar</button>
+            <button class= "bootstrap" onclick="getFormData(${cliente.id})">Actualizar</button>
             `
         }) 
     } catch (error){
-        alert("No se pudo cagar:"+ error)
+        alert("No se pudo cargar:"+ error)
     }
 }
 
@@ -86,7 +86,7 @@ function limpiarFormulario(){
 
 btnCancelar.addEventListener("click", limpiarFormulario);
 
-async function eliminarCliente(id) {
+async function eliminarcliente(id) {
     const confirmar = confirm("Desea eliminar?");
 
     if(!confirmar){
@@ -118,5 +118,5 @@ async function colocarDatosFormulario(id) {
     }
 }
 
-window.borrar = eliminarCliente;
+window.borrar = eliminarcliente;
 window.colocarDatosFormulario = colocarDatosFormulario;
